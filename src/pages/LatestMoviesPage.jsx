@@ -21,7 +21,7 @@ const LatestMoviesPage = () => {
             )}
             {data && (
                 <ListGroup>
-                    {data.data.results.map( movie =>
+                    {data.data.results.map(movie =>
                         <ListGroup.Item key={movie.id}>
                             <h3>{movie.title}</h3>
                             <p>{movie.release_date}</p>
