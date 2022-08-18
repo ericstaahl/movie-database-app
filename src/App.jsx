@@ -7,9 +7,6 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
     </Routes>
-    // <div className="App">
-    //   <p>Movie Database App</p>
-    // </div>
   )
 }
 
