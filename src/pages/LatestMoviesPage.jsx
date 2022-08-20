@@ -34,6 +34,7 @@ const LatestMoviesPage = () => {
                                 <p>{movie.release_date}</p>
                                 {movie.poster_path
                                     ? <img
+                                        className="img-fluid"
                                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                         alt={"Poster of movie: " + movie.title}
                                     />
