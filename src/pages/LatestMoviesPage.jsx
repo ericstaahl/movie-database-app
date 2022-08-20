@@ -3,7 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup"
 import Button from "react-bootstrap/Button"
 import { useQuery } from "react-query"
 import getData from "../services/getData"
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams, Link } from "react-router-dom"
 
 const LatestMoviesPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -39,6 +39,7 @@ const LatestMoviesPage = () => {
                                         alt={"Poster of movie: " + movie.title}
                                     />
                                     : <p>No poster available</p>}
+                                <Link to={`/movies/${movie.id}`}>Read more</Link>
                             </ListGroup.Item>
                         )}
                     </ListGroup>
