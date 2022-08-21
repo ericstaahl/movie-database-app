@@ -8,7 +8,7 @@ const MoviePage = () => {
     const { id } = useParams()
     console.log(id)
     // Run the query with the id.
-    const { data, isLoading, isError, error } = useQuery(['latest-movies', id], () => getData.getMovie(id))
+    const { data, isLoading, isError, error } = useQuery(['movie', id], () => getData.getMovie(id))
 
     console.log(data)
 
