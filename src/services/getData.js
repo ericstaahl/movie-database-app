@@ -18,12 +18,20 @@ const getLatestMovies = async (pageNumber) => {
 const getMovie = async (movieId) => {
     console.log("MovieId: ", movieId)
     if (movieId) {
-        const res = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&include_adult=false`)
+        const res = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&include_adult=false&append_to_response=credits`)
+        return res
+    }
+}
+
+const getActor = async (actorId) => {
+    if (actorId) {
+        const res = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&include_adult=false`)
         return res
     }
 }
 
 export default {
     getLatestMovies,
-    getMovie
+    getMovie,
+    getActor,
 }
