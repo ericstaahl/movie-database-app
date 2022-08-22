@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import { useQuery } from "react-query"
 import getData from "../services/getData"
 import { useSearchParams, Link } from "react-router-dom"
+import MovieList from "../components/MovieList"
 
 const PopularMoviesPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -27,23 +28,8 @@ const PopularMoviesPage = () => {
                     <p>An error occured: {error.message}</p>
                 )}
                 {data && (
-                    <ListGroup>
-                        {data.data.results.map(movie =>
-                            <ListGroup.Item key={movie.id}>
-                                <h3>{movie.title}</h3>
-                                <p>{movie.release_date}</p>
-                                <p>Average score: {movie.vote_average}</p>
-                                {movie.poster_path
-                                    ? <img
-                                        className="img-fluid"
-                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                        alt={"Poster of movie: " + movie.title}
-                                    />
-                                    : <p>No poster available</p>}
-                                <Link to={`/movies/${movie.id}`}>Read more</Link>
-                            </ListGroup.Item>
-                        )}
-                    </ListGroup>
+                    // Passing data as prop to the movie list component
+                    <MovieList data={data} />
                 )}
             </Container >
             {data && (
