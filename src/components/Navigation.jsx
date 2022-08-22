@@ -13,7 +13,7 @@ const Navigation = () => {
                     <Nav>
                         <Nav.Link as={NavLink} to={"/latest"} className='text-light'>Latest Movies</Nav.Link>
                         <Nav.Link as={NavLink} to={"/movie/popular"} className='text-light'>Most Popular Movies</Nav.Link>
-                        <Nav.Link as={NavLink} to={"/"} className='text-light'>Top Rated Movies</Nav.Link>
+                        <Nav.Link as={NavLink} to={"/top_rated"} className='text-light'>Top Rated Movies</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
