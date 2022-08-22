@@ -30,8 +30,16 @@ const getActor = async (actorId) => {
     }
 }
 
+const getMoviesOfActor = async (actorId) => {
+    if (actorId) {
+        const res = await axios.get(`https://api.themoviedb.org/3/discover/movie/?api_key=${API_KEY}&include_adult=false&with_people=${actorId}`)
+        return res
+    }
+}
+
 export default {
     getLatestMovies,
     getMovie,
     getActor,
+    getMoviesOfActor,
 }
