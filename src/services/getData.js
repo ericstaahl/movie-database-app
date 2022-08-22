@@ -49,16 +49,21 @@ const getMovie = async (movieId) => {
 
 const getActor = async (actorId) => {
     if (actorId) {
-        const res = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&include_adult=false`)
+        const res = await axios.get(`${BASE_URL}/person/${actorId}?api_key=${API_KEY}&include_adult=false`)
         return res
     }
 }
 
 const getMoviesOfActor = async (actorId) => {
     if (actorId) {
-        const res = await axios.get(`https://api.themoviedb.org/3/discover/movie/?api_key=${API_KEY}&include_adult=false&with_people=${actorId}`)
+        const res = await axios.get(`${BASE_URL}/discover/movie/?api_key=${API_KEY}&include_adult=false&with_people=${actorId}`)
         return res
     }
+}
+
+const getGenre = async () => {
+    const res = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`)
+    return res
 }
 
 export default {
@@ -68,4 +73,5 @@ export default {
     getMovie,
     getActor,
     getMoviesOfActor,
+    getGenre,
 }
