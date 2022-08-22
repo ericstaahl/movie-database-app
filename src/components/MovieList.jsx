@@ -8,8 +8,8 @@ const MovieList = ({ data }) => {
         <ListGroup>
             <div className="row">
                 {data.data.results.map(movie =>
-                    <Col key={movie.id} xs={12} lg={6} xl={4}>
-                        <ListGroup.Item className="d-flex justify-content-center flex-wrap m-1 p-1">
+                    <Col className="p-2" key={movie.id} xs={12} lg={6} xl={4}>
+                        <ListGroup.Item className="d-flex justify-content-center flex-wrap h-100">
                             <div>
                                 <h3>{movie.title}</h3>
                                 <p>Release date: {movie.release_date}</p>
@@ -24,7 +24,7 @@ const MovieList = ({ data }) => {
                                     />
                                     : <p>No poster available</p>
                             }
-                            <Col className="d-flex justify-content-center my-2" xs={12}>
+                            <Col className="d-flex justify-content-center align-items-center my-2" xs={12}>
                                 <Button as={Link} to={`/movies/${movie.id}`}>Read more</Button>
                             </Col>
                         </ListGroup.Item>
