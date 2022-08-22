@@ -15,6 +15,18 @@ const getLatestMovies = async (pageNumber) => {
     }
 }
 
+const getPopularMovies = async (pageNumber) => {
+    console.log("pageNumber: ", pageNumber)
+    // If pageNumber is truthy, run the below function, otherwise run the function without page as url param.
+    if (pageNumber) {
+        const res = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}&include_adult=false&page=${pageNumber}`)
+        return res
+    } else {
+        const res = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}&include_adult=false`)
+        return res
+    }
+}
+
 const getMovie = async (movieId) => {
     console.log("MovieId: ", movieId)
     if (movieId) {
@@ -39,6 +51,7 @@ const getMoviesOfActor = async (actorId) => {
 
 export default {
     getLatestMovies,
+    getPopularMovies,
     getMovie,
     getActor,
     getMoviesOfActor,
