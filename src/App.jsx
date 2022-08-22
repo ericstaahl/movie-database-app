@@ -5,6 +5,7 @@ import Navigation from './components/Navigation'
 import LatestMoviesPage from './pages/LatestMoviesPage';
 import MoviePage from './pages/MoviePage';
 import ActorPage from './pages/ActorPage';
+import PopularMoviesPage from './pages/PopularMoviesPage';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/latest" element={<LatestMoviesPage />} />
+        <Route path="/movie/popular" element={<PopularMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/people/:id" element={<ActorPage />} />
       </Routes>
