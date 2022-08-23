@@ -66,6 +66,16 @@ const getGenre = async () => {
     return res
 }
 
+const getMoviesByGenre = async (pageNumber, id) => {
+    if (pageNumber) {
+        const res = await axios.get(`${BASE_URL}/discover/movie/?api_key=${API_KEY}&include_adult=false&with_genres=${id}&page=${pageNumber}`)
+        return res
+    } else {
+        const res = await axios.get(`${BASE_URL}/discover/movie/?api_key=${API_KEY}&include_adult=false&with_genres=${id}`)
+        return res
+    }
+}
+
 export default {
     getLatestMovies,
     getPopularMovies,
@@ -74,4 +84,5 @@ export default {
     getActor,
     getMoviesOfActor,
     getGenre,
+    getMoviesByGenre,
 }
