@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import Navigation from './components/Navigation'
-import LatestMoviesPage from './pages/LatestMoviesPage';
 import MoviePage from './pages/MoviePage';
 import ActorPage from './pages/ActorPage';
 import GenrePage from './pages/GenrePage';
