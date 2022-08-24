@@ -42,7 +42,7 @@ const getTopRated = async (pageNumber) => {
 const getMovie = async (movieId) => {
     console.log("MovieId: ", movieId)
     if (movieId) {
-        const res = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&include_adult=false&append_to_response=credits`)
+        const res = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&include_adult=false&append_to_response=credits,similar`)
         return res
     }
 }
