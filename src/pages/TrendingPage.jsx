@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Container from "react-bootstrap/Container"
 import { useQuery } from "react-query"
 import { useSearchParams } from "react-router-dom"
@@ -6,11 +5,12 @@ import MovieList from "../components/MovieList"
 import Pagination from "../components/Pagination"
 import getData from "../services/getData"
 import Button from 'react-bootstrap/Button'
+import useLocalStorage from "../hooks/useLocalStorage"
 
 const TrendingPage = () => {
     // Recieving name of page, the query key to differentiate the query and the function to be used with react query.
     const [searchParams, setSearchParams] = useSearchParams()
-    const [timeFrame, setTimeFrame] = useState('day')
+    const [timeFrame, handleSetTimeFrame] = useLocalStorage()
     console.log('Timeframe: ', timeFrame)
 
     const handleSetSearchParams = (page) => {
@@ -32,8 +32,8 @@ const TrendingPage = () => {
     return (
         <>
             <Container>
-                <Button onClick={() => timeFrame === 'day' ? setTimeFrame('week') : setTimeFrame('day')}>Toggle</Button>
-                <h2>Trending Page</h2>
+                <Button onClick={() => handleSetTimeFrame()}>Toggle</Button>
+                <h2>{timeFrame === 'day' ? <p>Trending movies today</p> : <p>Trending movies this week</p>}</h2>
                 {/* Conditionally showing information */}
                 {isLoading && (
                     <p>Data is loading...</p>
