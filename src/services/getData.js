@@ -76,6 +76,16 @@ const getMoviesByGenre = async (pageNumber, id) => {
     }
 }
 
+const getTrending = async (pageNumber, timeFrame) => {
+    if (pageNumber) {
+        const res = await axios.get(`${BASE_URL}/trending/movie/${timeFrame}?api_key=${API_KEY}&include_adult=false&page=${pageNumber}`)
+        return res
+    } else {
+        const res = await axios.get(`${BASE_URL}/trending/movie/${timeFrame}?api_key=${API_KEY}&include_adult=false`)
+        return res
+    }
+}
+
 export default {
     getLatestMovies,
     getPopularMovies,
@@ -85,4 +95,5 @@ export default {
     getMoviesOfActor,
     getGenre,
     getMoviesByGenre,
+    getTrending,
 }

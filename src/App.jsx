@@ -7,6 +7,7 @@ import ActorPage from './pages/ActorPage';
 import GenrePage from './pages/GenrePage';
 import PageWithPagination from './pages/PageWithPagination';
 import getData from './services/getData';
+import TrendingPage from './pages/TrendingPage';
 
 function App() {
 
@@ -35,6 +36,10 @@ function App() {
             pageName={"Top Rated Movies"}
             queryKey={"top-rated'"}
             queryFunction={getData.getTopRated}
+          />}
+        />
+        <Route path="/trending"
+          element={<TrendingPage
           />}
         />
         <Route path="/movies/:id" element={<MoviePage />} />
