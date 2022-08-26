@@ -16,6 +16,7 @@ const Navigation = () => {
                         <Nav.Link as={NavLink} to={"/top_rated"} className='text-light'>Top Rated Movies</Nav.Link>
                         <Nav.Link as={NavLink} to={"/trending"} className='text-light'>Trending Movies</Nav.Link>
                         <Nav.Link as={NavLink} to={"/genres"} className='text-light'>Genres</Nav.Link>
+                        <Nav.Link as={NavLink} to={"/movies/search"} className='text-light'>Search movies</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

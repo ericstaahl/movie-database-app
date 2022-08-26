@@ -8,6 +8,7 @@ import GenrePage from './pages/GenrePage';
 import PageWithPagination from './pages/PageWithPagination';
 import getData from './services/getData';
 import TrendingPage from './pages/TrendingPage';
+import MovieSearchPage from './pages/MovieSearchPage';
 
 function App() {
 
@@ -40,6 +41,10 @@ function App() {
         />
         <Route path="/trending"
           element={<TrendingPage
+          />}
+        />
+        <Route path="/movies/search"
+          element={<MovieSearchPage
           />}
         />
         <Route path="/movies/:id" element={<MoviePage />} />
