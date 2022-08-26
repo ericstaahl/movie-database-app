@@ -15,13 +15,16 @@ const MoviePage = () => {
     if (data) {
         const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
         if (storedMovies) {
-            if (!storedMovies[data.data.id]) {
-                storedMovies[data.data.id] = data.data
+            if (!storedMovies.find(storedMovie => storedMovie.id === data.data.id)) {
+                if (storedMovies.length === 10) {
+                    storedMovies.shift()
+                }
+                storedMovies.push(data.data)
                 localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
             }
         } else {
-            const storedMovies = {}
-            storedMovies[data.data.id] = data.data
+            const storedMovies = []
+            storedMovies.push(data.data)
             localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
         }
     }
