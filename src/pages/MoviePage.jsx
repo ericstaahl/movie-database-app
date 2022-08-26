@@ -17,9 +17,9 @@ const MoviePage = () => {
         if (storedMovies) {
             if (!storedMovies.find(storedMovie => storedMovie.id === data.data.id)) {
                 if (storedMovies.length === 10) {
-                    storedMovies.shift()
+                    storedMovies.pop()
                 }
-                storedMovies.push(data.data)
+                storedMovies.unshift(data.data)
                 localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
             }
         } else {
