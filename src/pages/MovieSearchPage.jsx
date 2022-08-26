@@ -31,18 +31,17 @@ const MovieSearchPage = () => {
         e.preventDefault()
         // Set search query to the value of the form so that the query runs
         searchQuery = formValue
-        // set the url params so that the query is saved to browser history
+        // Set the url params so that the query is saved to browser history
+        // Excluding page as param so that the value of page is reset when a new search is made.
         handleSetSearchParams()
     }
 
 
     // Get the page param from the url
     let page = searchParams.get("page")
-    console.log(page)
-    console.log("Movie search page is running!")
 
     // Run the query with the page variable and search query.
-    const { data, isLoading, isError, error } = useQuery(['movie-search', { page, searchQuery }], () => getData.getSearchedMovies(page, searchQuery), {enabled: searchQuery ? true : false})
+    const { data, isLoading, isError, error } = useQuery(['movie-search', { page, searchQuery }], () => getData.getSearchedMovies(page, searchQuery), { enabled: searchQuery ? true : false })
 
     console.log(data)
 
