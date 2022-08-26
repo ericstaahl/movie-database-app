@@ -12,6 +12,20 @@ const MoviePage = () => {
     // Run the query with the id.
     const { data, isLoading, isError, error } = useQuery(['movie', id], () => getData.getMovie(id))
 
+    if (data) {
+        const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
+        if (storedMovies) {
+            if (!storedMovies[data.data.id]) {
+                storedMovies[data.data.id] = data.data
+                localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
+            }
+        } else {
+            const storedMovies = {}
+            storedMovies[data.data.id] = data.data
+            localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
+        }
+    }
+
     console.log(data)
 
     return (
