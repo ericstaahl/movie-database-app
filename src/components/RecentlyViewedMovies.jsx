@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
 
 const RecentlyViewedMovies = () => {
+    const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
 
     return (
         <div>
