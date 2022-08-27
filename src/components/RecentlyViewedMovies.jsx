@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
 
 const RecentlyViewedMovies = () => {
@@ -8,9 +10,12 @@ const RecentlyViewedMovies = () => {
             {storedMovies && (
                 Object.values(storedMovies).map((movie) => (
                     <div key={movie.id}>
-                        <p>{movie.title}</p>
+                        <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
                     </div>
                 ))
+            )}
+            {!storedMovies && (
+                <p className="mt-3">No movies to show</p>
             )}
         </div>
     )
