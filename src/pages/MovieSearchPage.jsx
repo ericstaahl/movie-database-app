@@ -72,6 +72,9 @@ const MovieSearchPage = () => {
                 {data && (
                     <MovieList data={data} />
                 )}
+                {data?.data.results.length === 0 && (
+                    <p>No results where found</p>
+                )}
             </Container >
             {data && (
                 <Pagination page={page} total_pages={data.data.total_pages} handleSetSearchParams={handleSetSearchParams} />
