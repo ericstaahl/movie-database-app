@@ -48,19 +48,20 @@ const MovieSearchPage = () => {
     return (
         <>
             <Container>
-                <Form onSubmit={handleFormSubmit}>
+                <h2 className='mt-2'>Movie search</h2>
+                <Form className='d-flex justify-content-center align-items-center' onSubmit={handleFormSubmit}>
                     <Form.Group className="d-flex my-2">
-                        <Form.Label className="mx-2">Search</Form.Label>
+                        <Form.Label className="mx-2 p-1 d-none d-lg-block">Search</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Enter your search query"
                             value={formValue}
+                            // Setting the value as the user types
                             onChange={(e) => setFormValue(e.target.value)}
                         />
-                        <Button className='mx-2' type='submit'>Search</Button>
                     </Form.Group>
+                    <Button className='mx-2' type='submit'>Search</Button>
                 </Form>
-                <h2>Movie search</h2>
                 {/* Conditionally showing information */}
                 {isLoading && (
                     <p>Data is loading...</p>
