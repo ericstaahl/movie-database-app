@@ -32,8 +32,12 @@ const TrendingPage = () => {
     return (
         <>
             <Container>
-                <Button onClick={() => handleSetTimeFrame()}>Toggle</Button>
-                <h2>{timeFrame === 'day' ? <p>Trending movies today</p> : <p>Trending movies this week</p>}</h2>
+                <h2 className="mt-2">{timeFrame === 'day' ? <p>Trending movies today</p> : <p>Trending movies this week</p>}</h2>
+                <Button onClick={() => {
+                    setSearchParams({ page: 1 })
+                    handleSetTimeFrame()
+                }}>Toggle
+                </Button>
                 {/* Conditionally showing information */}
                 {isLoading && (
                     <p>Data is loading...</p>
