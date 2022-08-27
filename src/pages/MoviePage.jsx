@@ -45,7 +45,7 @@ const MoviePage = () => {
                     <>
                         <Container>
                             <Row>
-                                <h2 className="my-3">{data.data.original_title}</h2>
+                                <h2 className="my-3">{data.data.title}</h2>
                                 <Col lg={6}>
                                     {data.data.poster_path
                                         ? <img className="img-fluid"
