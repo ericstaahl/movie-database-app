@@ -12,14 +12,18 @@ const MoviePage = () => {
     console.log(id)
     // Run the query with the id.
     const { data, isLoading, isError, error } = useQuery(['movie', id], () => getData.getMovie(id))
+    // Sending the name of the item and an initial value (if the item does not exist in LocalStorage)
     const [savedValue, setValue] = useLocalStorage('recently-viewed-movies', [])
 
     if (data) {
         if (savedValue) {
+            // If the id of the current movie does not exist on the array, then add it.
             if (!savedValue.find(storedMovie => storedMovie.id === data.data.id)) {
+                // If there already are 10 movies in the array, remove the last one.
                 if (savedValue.length === 10) {
                     savedValue.pop()
                 }
+                // Add the movie to the first index position.
                 savedValue.unshift(data.data)
                 setValue(savedValue)
             }
