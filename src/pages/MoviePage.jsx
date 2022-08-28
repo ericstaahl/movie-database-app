@@ -4,6 +4,7 @@ import getData from "../services/getData"
 import { Link, useParams } from "react-router-dom"
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import useLocalStorage from "../hooks/useLocalStorage"
 
 const MoviePage = () => {
     // Get the id param from the url
@@ -11,21 +12,17 @@ const MoviePage = () => {
     console.log(id)
     // Run the query with the id.
     const { data, isLoading, isError, error } = useQuery(['movie', id], () => getData.getMovie(id))
+    const [savedValue, setValue] = useLocalStorage('recently-viewed-movies', [])
 
     if (data) {
-        const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
-        if (storedMovies) {
-            if (!storedMovies.find(storedMovie => storedMovie.id === data.data.id)) {
-                if (storedMovies.length === 10) {
-                    storedMovies.pop()
+        if (savedValue) {
+            if (!savedValue.find(storedMovie => storedMovie.id === data.data.id)) {
+                if (savedValue.length === 10) {
+                    savedValue.pop()
                 }
-                storedMovies.unshift(data.data)
-                localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
+                savedValue.unshift(data.data)
+                setValue(savedValue)
             }
-        } else {
-            const storedMovies = []
-            storedMovies.push(data.data)
-            localStorage.setItem("recently-viewed-movies", JSON.stringify(storedMovies))
         }
     }
 
