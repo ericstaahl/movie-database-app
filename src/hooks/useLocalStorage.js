@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const useLocalStorage = (property, initialValue) => {
 
@@ -12,15 +12,12 @@ const useLocalStorage = (property, initialValue) => {
     }
 
     const setValue = (valueToBeSet) => {
-        console.log(valueToBeSet)
         if (savedValue) {
+            console.log("Value to be set: ", valueToBeSet)
             setSavedValue(valueToBeSet)
+            localStorage.setItem(property, JSON.stringify(savedValue))
         }
     }
-
-    useEffect(() => {
-        localStorage.setItem(property, JSON.stringify(savedValue))
-    }, [savedValue])
 
     return (
         [savedValue, setValue]
