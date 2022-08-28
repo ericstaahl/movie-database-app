@@ -10,11 +10,13 @@ import { useState } from "react"
 
 const MovieSearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-    // State to save input from search form
-    const [formValue, setFormValue] = useState('')
-
+    
     // Initially see if there is a search parameter in the url
     let searchQuery = searchParams.get('search')
+    console.log(searchQuery)
+
+    // State to save input from search form
+    const [formValue, setFormValue] = useState(() => searchQuery ? searchQuery : "")
 
     const handleSetSearchParams = (page) => {
         // If page is truthy, include it in the url params
