@@ -10,7 +10,7 @@ import { useState } from "react"
 
 const MovieSearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-    
+
     // Initially see if there is a search parameter in the url
     let searchQuery = searchParams.get('search')
     console.log(searchQuery)
@@ -37,7 +37,6 @@ const MovieSearchPage = () => {
         // Excluding page as param so that the value of page is reset when a new search is made.
         handleSetSearchParams()
     }
-
 
     // Get the page param from the url
     let page = searchParams.get("page")
@@ -72,7 +71,10 @@ const MovieSearchPage = () => {
                     <p>An error occured: {error.message}</p>
                 )}
                 {data && (
-                    <MovieList data={data} />
+                    <>
+                        <p className='fs-4 mt-2'>{`Searched for "${searchQuery}"`}</p>
+                        <MovieList data={data} />
+                    </>
                 )}
                 {data?.data.results.length === 0 && (
                     <p>No results where found</p>
