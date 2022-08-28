@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container"
 import { useQuery } from "react-query"
 import getData from "../services/getData"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 const ActorPage = () => {
     // Get the actor id param from the url
@@ -48,9 +48,8 @@ const ActorPage = () => {
                 )}
                 {moviesOfActor && (
                     moviesOfActor.data.results.map(movie => (
-                        <div key={movie.id}>
-                            {/* <Link to={`/people/${actor.id}`}>{actor.name}</Link> */}
-                            <p>{movie.original_title}</p>
+                        <div className="mt-2" key={movie.id}>
+                            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
                         </div>
                     ))
                 )}
