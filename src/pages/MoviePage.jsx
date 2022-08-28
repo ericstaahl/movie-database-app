@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import useLocalStorage from "../hooks/useLocalStorage"
+import { useEffect } from "react"
 
 const MoviePage = () => {
     // Get the id param from the url
@@ -15,10 +16,17 @@ const MoviePage = () => {
     // Sending the name of the item and an initial value (if the item does not exist in LocalStorage)
     const [savedValue, setValue] = useLocalStorage('recently-viewed-movies', [])
 
-    if (data) {
-        if (savedValue) {
-            // If the id of the current movie does not exist on the array, then add it.
-            if (!savedValue.find(storedMovie => storedMovie.id === data.data.id)) {
+    useEffect(() => {
+        if (data) {
+            if (savedValue) {
+                // Check if movie is already in the array.
+                const indexInArray = savedValue.findIndex(storedMovie => storedMovie.id === data.data.id)
+                // If the movie is already in the array, remove it 
+                // (will be added later on the first index position of the array)
+                if (indexInArray >= 0) {
+                    console.log("Splice is running");
+                    savedValue.splice(indexInArray, 1)
+                }
                 // If there already are 10 movies in the array, remove the last one.
                 if (savedValue.length === 10) {
                     savedValue.pop()
@@ -28,7 +36,7 @@ const MoviePage = () => {
                 setValue(savedValue)
             }
         }
-    }
+    }, [data])
 
     console.log(data)
 
