@@ -4,6 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup"
 import { Link } from "react-router-dom"
 
 const MovieList = ({ data }) => {
+    // Recieve data as a prop and display the movie
     return (
         <ListGroup>
             <div className="row">

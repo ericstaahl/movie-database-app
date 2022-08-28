@@ -5,7 +5,6 @@ import MovieList from "../components/MovieList"
 import Pagination from "../components/Pagination"
 import getData from "../services/getData"
 import Button from 'react-bootstrap/Button'
-import useTimeFrame from "../hooks/useTimeFrame"
 import useLocalStorage from "../hooks/useLocalStorage"
 
 const TrendingPage = () => {
