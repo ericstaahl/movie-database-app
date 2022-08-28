@@ -5,13 +5,14 @@ import MovieList from "../components/MovieList"
 import Pagination from "../components/Pagination"
 import getData from "../services/getData"
 import Button from 'react-bootstrap/Button'
+import useTimeFrame from "../hooks/useTimeFrame"
 import useLocalStorage from "../hooks/useLocalStorage"
 
 const TrendingPage = () => {
     // Recieving name of page, the query key to differentiate the query and the function to be used with react query.
     const [searchParams, setSearchParams] = useSearchParams()
-    const [timeFrame, handleSetTimeFrame] = useLocalStorage()
-    console.log('Timeframe: ', timeFrame)
+    const [savedValue, setValue] = useLocalStorage('timeFrame', 'day')
+    console.log('Timeframe: ', savedValue)
 
     const handleSetSearchParams = (page) => {
         setSearchParams({ page: page })
@@ -25,17 +26,19 @@ const TrendingPage = () => {
     // Run the query with the page variable.
     // If id does not exist, only use page as the query key
     // React Query does seem to remove id when it isn't available automatically though.
-    const { data, isLoading, isError, error } = useQuery(['trending', { page, timeFrame }], () => getData.getTrending(page, timeFrame))
+    const { data, isLoading, isError, error } = useQuery(['trending', { page, savedValue }], () => getData.getTrending(page, savedValue))
 
     console.log(data)
 
     return (
         <>
             <Container>
-                <h2 className="mt-2">{timeFrame === 'day' ? <p>Trending movies today</p> : <p>Trending movies this week</p>}</h2>
+                <h2 className="mt-2">{savedValue === 'day' ? <p>Trending movies today</p> : <p>Trending movies this week</p>}</h2>
                 <Button onClick={() => {
                     setSearchParams({ page: 1 })
-                    handleSetTimeFrame()
+                    savedValue === "day"
+                        ? setValue("week")
+                        : setValue("day")
                 }}>Toggle
                 </Button>
                 {/* Conditionally showing information */}
@@ -49,9 +52,11 @@ const TrendingPage = () => {
                     <MovieList data={data} />
                 )}
             </Container >
-            {data && (
-                <Pagination page={page} total_pages={data.data.total_pages} handleSetSearchParams={handleSetSearchParams} />
-            )}
+            {
+                data && (
+                    <Pagination page={page} total_pages={data.data.total_pages} handleSetSearchParams={handleSetSearchParams} />
+                )
+            }
         </>
     )
 }

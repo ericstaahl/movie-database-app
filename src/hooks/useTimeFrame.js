@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const useLocalStorage = () => {
+const useTimeFrame = () => {
 
     const [timeFrame, setTimeFrame] = useState(() => localStorage.getItem("timeFrame")
         ? JSON.parse((localStorage.getItem("timeFrame")))
@@ -24,4 +24,4 @@ const useLocalStorage = () => {
     )
 }
 
-export default useLocalStorage
+export default useTimeFrame
