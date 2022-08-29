@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button'
 import useLocalStorage from "../hooks/useLocalStorage"
 
 const TrendingPage = () => {
-    // Recieving name of page, the query key to differentiate the query and the function to be used with react query.
     const [searchParams, setSearchParams] = useSearchParams()
     const [savedValue, setValue] = useLocalStorage('timeFrame', 'day')
     console.log('Timeframe: ', savedValue)
@@ -21,9 +20,7 @@ const TrendingPage = () => {
     let page = searchParams.get("page")
     console.log(page)
 
-    // Run the query with the page variable.
-    // If id does not exist, only use page as the query key
-    // React Query does seem to remove id when it isn't available automatically though.
+    // Run the query with the page variable and the savedValue ("week" or "day")
     const { data, isLoading, isError, error } = useQuery(['trending', { page, savedValue }], () => getData.getTrending(page, savedValue))
 
     console.log(data)

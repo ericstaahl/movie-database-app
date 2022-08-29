@@ -16,6 +16,8 @@ const MovieSearchPage = () => {
     console.log(searchQuery)
 
     // State to save input from search form
+    // If searchQuery is truthy, set initial state to the value of SearchQuery
+    // Else, set it to an empty string.
     const [formValue, setFormValue] = useState(() => searchQuery ? searchQuery : "")
 
     const handleSetSearchParams = (page) => {
@@ -42,6 +44,8 @@ const MovieSearchPage = () => {
     let page = searchParams.get("page")
 
     // Run the query with the page variable and search query.
+    // The "enabled" property makes sure that the query only runs if searchQuery has been set to something truthy
+    // This way a search is only triggered after a search has been made (or there is a query in the url)
     const { data, isLoading, isError, error } = useQuery(['movie-search', { page, searchQuery }], () => getData.getSearchedMovies(page, searchQuery), { enabled: searchQuery ? true : false })
 
     console.log(data)
