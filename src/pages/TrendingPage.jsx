@@ -31,10 +31,13 @@ const TrendingPage = () => {
             <Container>
                 <h2 className="mt-2">{savedValue === 'day' ? <p>Trending movies today</p> : <p>Trending movies this week</p>}</h2>
                 <Button onClick={() => {
+                    if (savedValue === "day") {
+                        setValue("week")
+                    }
+                    if (savedValue === "week") {
+                        setValue("day")
+                    }
                     setSearchParams({ page: 1 })
-                    savedValue === "day"
-                        ? setValue("week")
-                        : setValue("day")
                 }}>Toggle
                 </Button>
                 {/* Conditionally showing information */}

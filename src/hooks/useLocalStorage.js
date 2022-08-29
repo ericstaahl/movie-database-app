@@ -20,8 +20,8 @@ const useLocalStorage = (property, initialValue) => {
         // Also set state. 
         if (valueToBeSet) {
             console.log("Value to be set: ", valueToBeSet)
+            localStorage.setItem(property, JSON.stringify(valueToBeSet))
             setSavedValue(valueToBeSet)
-            localStorage.setItem(property, JSON.stringify(savedValue))
         }
     }
 
