@@ -68,10 +68,10 @@ const getGenre = async () => {
 
 const getMoviesByGenre = async (pageNumber, id) => {
     if (pageNumber) {
-        const res = await axios.get(`${BASE_URL}/discover/movie/?api_key=${API_KEY}&include_adult=false&with_genres=${id}&page=${pageNumber}`)
+        const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&include_adult=false&with_genres=${id}&page=${pageNumber}`)
         return res
     } else {
-        const res = await axios.get(`${BASE_URL}/discover/movie/?api_key=${API_KEY}&include_adult=false&with_genres=${id}`)
+        const res = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&include_adult=false&with_genres=${id}`)
         return res
     }
 }
