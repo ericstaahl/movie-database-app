@@ -9,6 +9,7 @@ import PageWithPagination from './pages/PageWithPagination';
 import getData from './services/getData';
 import TrendingPage from './pages/TrendingPage';
 import MovieSearchPage from './pages/MovieSearchPage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
 
@@ -56,6 +57,9 @@ function App() {
             queryKey={"movies-by-genre"}
             queryFunction={getData.getMoviesByGenre}
           />}
+        />
+        <Route path='/about'
+          element={<AboutPage />}
         />
       </Routes>
     </>
