@@ -9,6 +9,7 @@ import useLocalStorage from "../hooks/useLocalStorage"
 
 const TrendingPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
+    // Sending the name of the item and an initial value (if the item does not exist in Local Storage)
     const [savedValue, setValue] = useLocalStorage('timeFrame', 'day')
     console.log('Timeframe: ', savedValue)
 
