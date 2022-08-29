@@ -33,13 +33,14 @@ const TrendingPage = () => {
                 <Button onClick={() => {
                     if (savedValue === "day") {
                         setValue("week")
+                        setSearchParams({ page: 1 })
                         return
                     }
                     if (savedValue === "week") {
                         setValue("day")
+                        setSearchParams({ page: 1 })
                         return
                     }
-                    setSearchParams({ page: 1 })
                 }}>Toggle
                 </Button>
                 {/* Conditionally showing information */}
