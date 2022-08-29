@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container"
 import { useQuery } from "react-query"
 import getData from "../services/getData"
 import { Link, useParams } from "react-router-dom"
+import Col from "react-bootstrap/Col"
 
 const ActorPage = () => {
     // Get the actor id param from the url
@@ -37,6 +38,10 @@ const ActorPage = () => {
                             : <p>No picture available</p>}
                         <p>Birthday: {data.data.birthday}</p>
                         <p>Known for: {data.data.known_for_department}</p>
+                        <Col md={8} lg={6}>
+                            <h4>Biography</h4>
+                            <p>{data.data.biography}</p>
+                        </Col>
                     </>
                 )}
                 <h3>Starred in:</h3>
