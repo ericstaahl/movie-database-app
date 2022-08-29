@@ -18,8 +18,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="/latest"
+        <Route path="/latest"
           element={<PageWithPagination
             pageName={"Latest Movies"}
             queryKey={"latest-movies"}
