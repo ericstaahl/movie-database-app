@@ -4,10 +4,10 @@ const useLocalStorage = (property, initialValue) => {
 
     // Needs to be stateful for it to work in TrendingPage
     // If the value recieved from Local Storage is truhty, parse the item and set it to state. 
-    // Else set state to null.
+    // Else set state to initialValue.
     const [savedValue, setSavedValue] = useState(() => localStorage.getItem(property)
         ? JSON.parse(localStorage.getItem(property))
-        : null
+        : initialValue
     )
 
     if (!savedValue) {
