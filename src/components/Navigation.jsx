@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const Navigation = () => {
     return (
-        <Navbar bg="dark" variant='dark' collapseOnSelect expand="md">
+        <Navbar bg="dark" variant='dark' collapseOnSelect expand="md" sticky='top'>
             <Container>
                 <Navbar.Brand as={Link} to={'/'}>Movie Database App</Navbar.Brand>
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
