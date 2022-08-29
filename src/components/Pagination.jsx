@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap"
+import Button from "react-bootstrap/Button"
 
 const Pagination = ({ page, total_pages, handleSetSearchParams }) => {
     console.log("Pagination: ", page)
@@ -15,7 +15,7 @@ const Pagination = ({ page, total_pages, handleSetSearchParams }) => {
                 handleSetSearchParams(page)
             }
             }>←</Button>
-            <Button className="mx-2 my-2" disabled={page >= total_pages} onClick={() => {
+            <Button className="mx-2 my-2" disabled={page >= total_pages || page >= 500} onClick={() => {
                 if (page) {
                     page++
                     console.log(page)
