@@ -18,7 +18,6 @@ const PageWithPagination = ({ pageName, queryKey, queryFunction }) => {
     // Get the page param from the url
     let page = searchParams.get("page")
     console.log(page)
-    console.log("Im running!")
 
     // Run the query with the page variable.
     // If id does not exist, only use page as the query key

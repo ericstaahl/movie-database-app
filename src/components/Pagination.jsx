@@ -15,6 +15,9 @@ const Pagination = ({ page, total_pages, handleSetSearchParams }) => {
                 handleSetSearchParams(page)
             }
             }>←</Button>
+            {/* If the value of page is equal to or higher than total_pages, make the button inactive. */}
+            {/* The button should also be inactive if the value of page is equal to or higher than 500.
+            Most endpoints only allow you to go as far as 500 pages */}
             <Button className="mx-2 my-2" disabled={page >= total_pages || page >= 500} onClick={() => {
                 if (page) {
                     page++

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 
 
 const RecentlyViewedMovies = () => {
+    // Get recently viewed movies from Local Storage
     const storedMovies = JSON.parse(localStorage.getItem("recently-viewed-movies"))
 
     return (

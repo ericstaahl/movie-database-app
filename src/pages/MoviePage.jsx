@@ -24,7 +24,6 @@ const MoviePage = () => {
                 // If the movie is already in the array, remove it 
                 // (will be added later on the first index position of the array)
                 if (indexInArray >= 0) {
-                    console.log("Splice is running");
                     savedValue.splice(indexInArray, 1)
                 }
                 // If there already are 10 movies in the array, remove the last one.
