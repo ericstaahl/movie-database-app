@@ -8,7 +8,7 @@ const HomePage = () => {
     <Container className="">
       <Row className="d-flex justify-content-center align-items-cente text-center">
         <Col className="mt-5" xs={12}>
-          <h2>Welcome to this app!</h2>
+          <h2>Welcome to the app!</h2>
         </Col>
         <Col className="mt-5" xs={12}>
           <RecentlyViewedMovies />
