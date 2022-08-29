@@ -33,9 +33,11 @@ const TrendingPage = () => {
                 <Button onClick={() => {
                     if (savedValue === "day") {
                         setValue("week")
+                        return
                     }
                     if (savedValue === "week") {
                         setValue("day")
+                        return
                     }
                     setSearchParams({ page: 1 })
                 }}>Toggle
